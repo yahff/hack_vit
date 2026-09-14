@@ -31,10 +31,7 @@ class CustomAttention(nn.Module):
         q = q.permute(0, 2, 1, 3)  # (B, N, num_heads, head_dim)
         k = k.permute(0, 2, 1, 3)  # (B, N, num_heads, head_dim)
         v = v.permute(0, 2, 1, 3)  # (B, N, num_heads, head_dim)
-        
-        # Debug: Print shapes to verify
-        #print(f"Q shape: {q.shape}, K shape: {k.shape}, V shape: {v.shape}")
-        
+                
         # Attention computation: Q @ K^T
         # q: (B, N, num_heads, head_dim), k: (B, N, num_heads, head_dim)
         # Result should be: (B, N, num_heads, N)
