@@ -7,30 +7,7 @@ from VisionTransformerBenchmark import VisionTransformerBenchmark
 from vit_hack import hack_vit
 
 def main():
-    # Initialize the benchmark class
-    benchmark = VisionTransformerBenchmark()
     
-    # Example 1: Quick comparison of all implementations with random input
-    #print("quick comparison")
-    #results = benchmark.run_comparison(
-     #   model_path='vit_cifar100_finetuned2.pth',
-      #  implementations=['builtin', 'naive'],  # Test built-in vs naive
-       # benchmark_runs=3,  # Quick test with fewer runs
-        #warmup_runs=1
-    #)
-    
-    # Example 2: Load your own model and image
-    #print("\n=== Example 2: Custom Model and Image ===")
-    # Uncomment and modify paths as needed:
-    # results = benchmark.run_comparison(
-    #     model_path="/path/to/your/custom_model.pth",
-    #     image_path="/path/to/your/image.jpg",
-    #     implementations=['builtin', 'custom'],
-    #     benchmark_runs=5
-    # )
-    
-    # Example 3: Individual testing and manual comparison
-    #print("\n=== Example 3: Manual Testing ===")
     
     # Load model and prepare input
     model = benchmark.load_model(model_path='vit_cifar100_finetuned2.pth') #choose model.  default is inbuilt weights
