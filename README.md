@@ -1,4 +1,5 @@
-# Julia Matrix Multiplication in a Vision Transformer
+# Hack-ViT
+## Julia Matrix Multiplication in a Vision Transformer
 
 This project benchmarks several matrix multiplication implementations inside the
 self-attention layers of a PyTorch Vision Transformer (ViT-B/16). Attention
