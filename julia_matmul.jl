@@ -3,14 +3,8 @@ using CUDA
 
 println("Loading Julia matmul implementations...")
 
-# =============================================================================
-# MATRIX MULTIPLICATION IMPLEMENTATIONS
-# =============================================================================
-# All implementations are defined here as separate functions.
-# Python will select which one to use as 'optimized_matmul' depending on the name.
-
 function builtin_matmul(A, B)
-    return A * B  
+    return A * B
 end
 
 function naive_matmul(A, B)
@@ -23,7 +17,6 @@ function naive_matmul(A, B)
     
     result = zeros(eltype(A), rows_A, cols_B)
     
-    # Simple triple nested loop
     for i in 1:rows_A
         for j in 1:cols_B
             sum_val = zero(eltype(A))
@@ -37,7 +30,6 @@ function naive_matmul(A, B)
     return result
 end
 
-# 3. tile-based implementation (better cache locality)
 function tiled_matmul(A, B, block_size=64)
     rows_A, cols_A = size(A)
     rows_B, cols_B = size(B)
@@ -48,7 +40,6 @@ function tiled_matmul(A, B, block_size=64)
     
     result = zeros(eltype(A), rows_A, cols_B)
     
-    # Block-based multiplication for better cache performance
     for i_block in 1:block_size:rows_A
         for j_block in 1:block_size:cols_B
             for k_block in 1:block_size:cols_A
@@ -57,7 +48,6 @@ function tiled_matmul(A, B, block_size=64)
                 j_end = min(j_block + block_size - 1, cols_B)
                 k_end = min(k_block + block_size - 1, cols_A)
                 
-                # Process the block
                 for i in i_block:i_end
                     for j in j_block:j_end
                         sum_val = result[i, j]
